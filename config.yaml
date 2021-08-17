@@ -1,0 +1,52 @@
+experiment_name: som-dst-alpha
+exp_starter: False
+opr_code: full
+
+device: cuda:0
+num_workers: 0
+seed: 42
+
+train_path: /opt/ml/input/data/train/train_dials.json
+eval_path: /opt/ml/input/data/eval/eval_dials.json
+checkpoint_dir: /opt/ml/output/checkpoints
+checkpoint_model_name: somdst-model.pth
+checkpoint_sch_e_name: somdst-sch-e.pkl
+checkpoint_sch_d_name: somdst-sch-d.pkl
+submission_dir: /opt/ml/output/submissions
+
+max_turn_len: 
+max_seq_len: 512
+max_val_len: 12
+
+plm_name_or_path: 'kykim/bert-kor-base' #
+resume_train: False
+save_checkpoint: True
+stop_count: 
+
+dropout_rate: 0.1
+word_dropout_rate: 0.1
+
+valid_ratio: 0.075
+folds: 5
+epochs: 20
+
+batch_size: 32
+lr_enc:
+  base: 2.5e-4
+  min: 5.0e-5
+lr_dec:
+  base: 1.0e-4
+  min: 2.0e-5
+enc_warmup_ratio: 0.1
+dec_warmup_ratio: 0.1
+cycle_steps: 500
+damping_ratio: 0.1
+weight_decay: 1.0e-2
+betas: [0.9, 0.999]
+eps: 1.0e-08
+momentum: 0.9
+nesterov: False
+optimizer: AdamW
+selective_decay: True
+
+neptune_api_token: eyJhcGlfYWRkcmVzcyI6Imh0dHBzOi8vYXBwLm5lcHR1bmUuYWkiLCJhcGlfdXJsIjoiaHR0cHM6Ly9hcHAubmVwdHVuZS5haSIsImFwaV9rZXkiOiIzNjFhYjRlZi0xZmZiLTRkYTktYTgxYy1iZmRkZjE2NTIwMWUifQ==
